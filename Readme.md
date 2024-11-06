@@ -1,4 +1,4 @@
-# Url parser
+# URL parser
 This Rust project provides functionality for parsing URLs and their components (such as protocol, domains, parameters, etc.) using the rust-peg library. It is designed for analyzing parts of a URL.
 
 ## Description of the parsing process
@@ -42,7 +42,7 @@ The first rule of this parser checks whether a provided string is a valid URL sc
 Domain name
 </dt>
 <dd>
-: The domain name is the key part of the website address that tells you who is responsible for the content 
+The domain name is the key part of the website address that tells you who is responsible for the content 
 and ultimately whether it is legitimate or not. The domain name can have a list of subdomains, separated by a point.
 A domain can have up to 500 subdomains. Each subdomain can be up to 255 characters long, but for multi level subdomains, each level can only be 63 characters long.
 A domain name is required for a URL address.
@@ -53,7 +53,7 @@ The examples of a domain name: google.com, distedu.ukma.edu.ua.
 Port
 </dt>
 <dd>
-: A port number is a means of identifying an application or service on a server to which a message that comes over a network is to be forwarded.
+A port number is a means of identifying an application or service on a server to which a message that comes over a network is to be forwarded.
 A port number is a 16-bit unsigned integer that ranges from 0 to 65535. So this is how it is parsed.
 A port value separated from a domain value by a colon.
 A port can be optional.
@@ -64,7 +64,7 @@ The URL address with port example: http:://localhost:80.
 Path
 </dt>
 <dd>
-: The URL path represents the portion of the web address after the top-level domain. It includes the subdirectory and slug(s), giving the specific location of a page within the website's hierarchy.
+The URL path represents the portion of the web address after the top-level domain. It includes the subdirectory and slug(s), giving the specific location of a page within the website's hierarchy.
 The path can be optional.
 Example: /page/new/3
 </dd>
@@ -73,7 +73,7 @@ Example: /page/new/3
 Parameters
 </dt>
 <dd>
-: (also known as “query strings”) are a way to structure additional information for a given URL. Parameters are added to the end of a URL after a ‘?’ symbol, and multiple parameters can be included when separated by the ‘&’ symbol.
+(also known as “query strings”) are a way to structure additional information for a given URL. Parameters are added to the end of a URL after a ‘?’ symbol, and multiple parameters can be included when separated by the ‘&’ symbol.
 Parameters can be optional.
 Example: ?color=red&page=2
 </dd>
@@ -82,7 +82,7 @@ Example: ?color=red&page=2
 Fragment
 </dt>
 <dd>
-: a string of characters that refers to a resource that is subordinate to another, primary resource. The primary resource is identified by a Uniform Resource Identifier (URI), and the fragment identifier points to the subordinate resource.
+A string of characters that refers to a resource that is subordinate to another, primary resource. The primary resource is identified by a Uniform Resource Identifier (URI), and the fragment identifier points to the subordinate resource.
 Fragment can be optional. The example of fragment: #fragment
 </dd>
 </dl>
