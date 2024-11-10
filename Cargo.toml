@@ -5,3 +5,5 @@ edition = "2021"
 
 [dependencies]
 peg = "0.8.4"
+pest = "2.7.14"
+pest_derive = "2.7.14"

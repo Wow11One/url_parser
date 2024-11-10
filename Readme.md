@@ -14,7 +14,6 @@ Scheme (protocol)
 <dd>
 The scheme identifies the protocol to be used to access the resource on the Internet. It can be HTTP (without SSL), HTTPS (with SSL),
 FTP and so on. 
-The list of official IANA-registered schemes:
 URI schemes registered with the IANA, both provisional and fully approved, are listed in its registry for Uniform Resource Identifier (URI) Schemes. These include well known ones like:
 
 * file - File URI scheme
@@ -34,8 +33,10 @@ As well as many lesser known schemes like:
 
 A scheme is required for a URL address.
 
+**Technical aspects of parsing:**
+
 For parsing purposes, created an enum of all official protocols and method that returns their string value.
-The first rule of this parser checks whether a provided string is a valid URL scheme.
+The first rule of this parser checks whether a provided string is a valid URL scheme. It is important to mention, that URL scheme is case insensitive.
 </dd>
 
 <dt>
@@ -44,9 +45,11 @@ Domain name
 <dd>
 The domain name is the key part of the website address that tells you who is responsible for the content 
 and ultimately whether it is legitimate or not. The domain name can have a list of subdomains, separated by a point.
-A domain can have up to 500 subdomains. Each subdomain can be up to 255 characters long, but for multi level subdomains, each level can only be 63 characters long.
-A domain name is required for a URL address.
 The examples of a domain name: google.com, distedu.ukma.edu.ua.
+
+**Technical aspects of parsing:**
+
+A domain name is required for a URL address. A label is a part of a domain name, separated by a dot ("."). Each label can be up to 63 characters long. For simplicity, domain names and subdomains are parsed into a general vector as string values.
 </dd>
 
 <dt>
@@ -54,10 +57,10 @@ Port
 </dt>
 <dd>
 A port number is a means of identifying an application or service on a server to which a message that comes over a network is to be forwarded.
+The URL address with port example: http:://localhost:80.
 A port number is a 16-bit unsigned integer that ranges from 0 to 65535. So this is how it is parsed.
 A port value separated from a domain value by a colon.
 A port can be optional.
-The URL address with port example: http:://localhost:80.
 </dd>
 
 <dt>

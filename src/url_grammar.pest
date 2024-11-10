@@ -1,0 +1,41 @@
+number = {      
+    ASCII_DIGIT+
+}
+
+letter = { 'a'..'z' | 'A'..'Z' }
+
+scheme = { 
+    ^"file"
+    | ^"ftp"
+    | ^"http"
+    | ^"http"
+    | ^"imap"
+    | ^"irc"
+    | ^"nntp"
+    | ^"acap"   
+    | ^"icap"   
+    | ^"mtqp"
+    | ^"wss"
+}
+
+word = { letter+ }
+
+word_with_numbers= { (letter | number)+ }
+
+// label is a part of domain name separated by [.]
+label = {
+    word ~ (("-"? ~ word_with_numbers))*
+}
+
+domain_name = {
+	label ~ ("." ~ label)+ 
+}
+
+path = {
+    ("/" ~ word_with_numbers)+
+}
+
+url = {
+    scheme ~ "://" ~ domain_name
+}
+
