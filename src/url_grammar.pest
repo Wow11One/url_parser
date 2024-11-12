@@ -8,7 +8,7 @@ scheme = {
     ^"file"
     | ^"ftp"
     | ^"http"
-    | ^"http"
+    | ^"https"
     | ^"imap"
     | ^"irc"
     | ^"nntp"
@@ -20,22 +20,40 @@ scheme = {
 
 word = { letter+ }
 
-word_with_numbers= { (letter | number)+ }
+word_with_numbers= { (letter | ASCII_DIGIT)+ }
 
 // label is a part of domain name separated by [.]
-label = {
-    word ~ (("-"? ~ word_with_numbers))*
+label = ${
+    word ~ ("-" ~ word_with_numbers)*
 }
 
-domain_name = {
-	label ~ ("." ~ label)+ 
+domain_name = ${
+	label ~ ("." ~ label)* 
 }
 
-path = {
+port = {
+    ASCII_DIGIT{1, 6}
+}
+
+paths = ${
     ("/" ~ word_with_numbers)+
 }
 
-url = {
-    scheme ~ "://" ~ domain_name
+key_value_pair = {
+    word_with_numbers ~ "=" ~ word_with_numbers
 }
 
+parameters = {
+    key_value_pair ~ ("&" ~ key_value_pair)*
+}
+
+fragment = {
+    word_with_numbers
+}
+
+url = {
+    SOI ~ scheme ~ "://" ~ domain_name ~ (":" ~ port)? ~ (paths)? ~ ("?" ~ parameters)? ~ ("#" ~ fragment)? ~ EOI
+}
+
+
+WHITESPACE = _{ " " }

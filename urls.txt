@@ -1,0 +1,7 @@
+http://example.com
+file://www.sub.example.org:8080/resource/resource2?query1=value1&query2=value2#section1
+ftp://sub.domain.example.com/path1/path2?param=value
+imap://mail.example.com:993
+wss://invalid.example.io//socket
+wss://secure.example.io/socket
+http://localhost:3000/path?debug=true

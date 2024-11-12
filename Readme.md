@@ -1,4 +1,4 @@
-# URL parser
+# ukma_url_parser
 This Rust project provides functionality for parsing URLs and their components (such as protocol, domains, parameters, etc.) using the rust-peg library. It is designed for analyzing parts of a URL.
 
 ## Description of the parsing process
@@ -49,7 +49,7 @@ The examples of a domain name: google.com, distedu.ukma.edu.ua.
 
 **Technical aspects of parsing:**
 
-A domain name is required for a URL address. A label is a part of a domain name, separated by a dot ("."). Each label can be up to 63 characters long. For simplicity, domain names and subdomains are parsed into a general vector as string values.
+A domain name is required for a URL address. A label is a part of a domain name, separated by a dot (".").. For simplicity, domain names and subdomains are parsed into a general vector as string values.
 </dd>
 
 <dt>
@@ -58,6 +58,9 @@ Port
 <dd>
 A port number is a means of identifying an application or service on a server to which a message that comes over a network is to be forwarded.
 The URL address with port example: http:://localhost:80.
+
+**Technical aspects of parsing:**
+
 A port number is a 16-bit unsigned integer that ranges from 0 to 65535. So this is how it is parsed.
 A port value separated from a domain value by a colon.
 A port can be optional.
@@ -68,7 +71,10 @@ Path
 </dt>
 <dd>
 The URL path represents the portion of the web address after the top-level domain. It includes the subdirectory and slug(s), giving the specific location of a page within the website's hierarchy.
-The path can be optional.
+
+**Technical aspects of parsing:**
+
+The path can be optional. It is stored as list of strings.
 Example: /page/new/3
 </dd>
 
@@ -79,6 +85,10 @@ Parameters
 (also known as “query strings”) are a way to structure additional information for a given URL. Parameters are added to the end of a URL after a ‘?’ symbol, and multiple parameters can be included when separated by the ‘&’ symbol.
 Parameters can be optional.
 Example: ?color=red&page=2
+
+**Technical aspects of parsing:**
+
+Parameters are parsed as hashmap with key value structure (Key and value are strings).
 </dd>
 
 <dt>
@@ -87,6 +97,10 @@ Fragment
 <dd>
 A string of characters that refers to a resource that is subordinate to another, primary resource. The primary resource is identified by a Uniform Resource Identifier (URI), and the fragment identifier points to the subordinate resource.
 Fragment can be optional. The example of fragment: #fragment
+
+**Technical aspects of parsing:**
+
+It is parsed as a usual string/
 </dd>
 </dl>
 The task is to create a parser that can understand all these optional and required parts of a URL and store them in a specific Rust structure.
