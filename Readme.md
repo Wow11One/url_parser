@@ -49,7 +49,7 @@ The examples of a domain name: google.com, distedu.ukma.edu.ua.
 
 **Technical aspects of parsing:**
 
-A domain name is required for a URL address. A label is a part of a domain name, separated by a dot (".").. For simplicity, domain names and subdomains are parsed into a general vector as string values.
+A domain name is required for a URL address. A label is a part of a domain name, separated by a dot ("."). For simplicity, domain names and subdomains are parsed into a general vector as string values.
 </dd>
 
 <dt>
@@ -105,3 +105,45 @@ It is parsed as a usual string/
 </dl>
 The task is to create a parser that can understand all these optional and required parts of a URL and store them in a specific Rust structure.
 
+## Useful commands (using Makefile)
+
+### Run a project with a test file (urls.txt)
+
+```
+make run
+```
+
+### Run tests
+
+```
+make test
+```
+
+### Format code
+
+```
+make fmt
+```
+
+### Analyse code
+
+```
+make clippy
+```
+
+### Open docs
+
+```
+make doc
+```
+
+### Get help
+
+```
+make help
+```
+
+## Result example
+### Reading urls from urls.txt
+
+<img src="./images/url-structure.webp" alt="url-structure" style="border-radius: 25px;" />
