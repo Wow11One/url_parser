@@ -1,6 +1,11 @@
 # ukma_url_parser
 This Rust project provides functionality for parsing URLs and their components (such as protocol, domains, parameters, etc.) using the rust-pest library. It is designed for analyzing parts of a URL.
 
+## Links
+
+* https://crates.io/crates/ukma_url_parser - Crate
+* https://docs.rs/ukma_url_parser/0.1.0/ukma_url_parser/ - Docs
+
 ## Description of the parsing process
 A URL (Uniform Resource Locator) is the address of a unique resource on the internet. It is one of the key mechanisms used by browsers to retrieve resources such as HTML pages, CSS documents, images, and more.
 This library parses URL parts step-by-step, so it is crucial to understand the structure of a URL:
