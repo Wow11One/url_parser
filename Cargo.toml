@@ -3,6 +3,7 @@ name = "ukma_url_parser"
 version = "0.1.0"
 edition = "2021"
 description = "This Rust project provides functionality for parsing URLs and their components (such as protocol, domains, parameters, etc.) using the rust-pest library. It is designed for analyzing parts of a URL."
+license = "MIT"
 
 [dependencies]
 peg = "0.8.4"
