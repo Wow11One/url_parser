@@ -39,3 +39,4 @@ help:
 	@echo   make clean   - Clean build files
 	@echo   make doc     - Generate docs and open it in a browser
 	@echo   make help    - Print this help message
+	@echo   make credits - Provide information about an author of a crate
