@@ -1,5 +1,5 @@
 # ukma_url_parser
-This Rust project provides functionality for parsing URLs and their components (such as protocol, domains, parameters, etc.) using the rust-peg library. It is designed for analyzing parts of a URL.
+This Rust project provides functionality for parsing URLs and their components (such as protocol, domains, parameters, etc.) using the rust-pest library. It is designed for analyzing parts of a URL.
 
 ## Description of the parsing process
 A URL (Uniform Resource Locator) is the address of a unique resource on the internet. It is one of the key mechanisms used by browsers to retrieve resources such as HTML pages, CSS documents, images, and more.
@@ -146,4 +146,4 @@ make help
 ## Result example
 ### Reading urls from urls.txt
 
-<img src="./images/url-structure.webp" alt="url-structure" style="border-radius: 25px;" />
+<img src="./images/result-example.png" alt="url-structure" style="border-radius: 25px;" />

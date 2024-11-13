@@ -5,6 +5,9 @@ PROJECT_NAME := ukma_url_parser
 run:
 	cargo run -- parse urls.txt
 
+credits:
+	cargo run -- credits
+
 test:
 	cargo test
 
