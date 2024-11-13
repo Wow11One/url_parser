@@ -3,7 +3,6 @@ mod url_grammar_unit_tests {
     use pest::Parser;
     use ukma_url_parser::*;
 
-    // Створюємо функцію для спрощення тестів
     fn parse_rule(rule: Rule, input: &str) -> Result<(), String> {
         URLPestParser::parse(rule, input)
             .map(|_| ())
@@ -25,7 +24,7 @@ mod url_grammar_unit_tests {
     #[test]
     fn test_scheme() {
         assert!(parse_rule(Rule::scheme, "http").is_ok());
-        assert!(parse_rule(Rule::scheme, "ftp").is_ok());
+        assert!(parse_rule(Rule::scheme, "fpp").is_err());
     }
 
     #[test]
@@ -49,37 +48,37 @@ mod url_grammar_unit_tests {
     #[test]
     fn test_domain_name() {
         assert!(parse_rule(Rule::domain_name, "example.com").is_ok());
-        assert!(parse_rule(Rule::domain_name, "sub.example.co.uk").is_ok());
+        assert!(parse_rule(Rule::domain_name, "..sub.example.co.uk").is_err());
     }
 
     #[test]
     fn test_port() {
         assert!(parse_rule(Rule::port, "8080").is_ok());
-        assert!(parse_rule(Rule::port, "443").is_ok());
+        assert!(parse_rule(Rule::port, "").is_err());
     }
 
     #[test]
     fn test_paths() {
         assert!(parse_rule(Rule::paths, "/path/to/resource").is_ok());
-        assert!(parse_rule(Rule::paths, "/another/path").is_ok());
+        assert!(parse_rule(Rule::paths, "//path").is_err());
     }
 
     #[test]
     fn test_key_value_pair() {
         assert!(parse_rule(Rule::key_value_pair, "key=value").is_ok());
-        assert!(parse_rule(Rule::key_value_pair, "param123=val456").is_ok());
+        assert!(parse_rule(Rule::key_value_pair, "param123val456").is_err());
     }
 
     #[test]
     fn test_parameters() {
         assert!(parse_rule(Rule::parameters, "key=value&param=val").is_ok());
-        assert!(parse_rule(Rule::parameters, "foo=bar&test123=example456").is_ok());
+        assert!(parse_rule(Rule::parameters, "foo=").is_err());
     }
 
     #[test]
     fn test_fragment() {
         assert!(parse_rule(Rule::fragment, "section1").is_ok());
-        assert!(parse_rule(Rule::fragment, "part2").is_ok());
+        assert!(parse_rule(Rule::fragment, "=").is_err());
     }
 
     #[test]

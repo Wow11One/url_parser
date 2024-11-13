@@ -1,9 +1,15 @@
+/// Matches an empty character
+WHITESPACE = _{ " " }
+
+/// Parses a sequence of digit characters
 number = {      
     ASCII_DIGIT+
 }
 
+/// Matches any latin letter
 letter = { 'a'..'z' | 'A'..'Z' }
 
+/// Parses the scheme/protocol of the URL. Supports only URI schemes registered with the IANA 
 scheme = { 
     ^"file"
     | ^"ftp"
@@ -18,42 +24,52 @@ scheme = {
     | ^"wss"
 }
 
+/// Parses a sequence of letters
 word = { letter+ }
 
+/// Parses a sequence of characters that can contain a letter or a number
 word_with_numbers= { (letter | ASCII_DIGIT)+ }
 
-// label is a part of domain name separated by [.]
+/// Parses a URL label, which is a part of domain name separated by [.]
 label = ${
     word ~ ("-" ~ word_with_numbers)*
 }
 
+///  Parses the domain name of the URL, which is the main part of it
 domain_name = ${
 	label ~ ("." ~ label)* 
 }
 
+/// Parses a port value. Should be a number that contains no more than 6 symbols
 port = {
     ASCII_DIGIT{1, 6}
 }
 
+/// Parses the path segments after the domain and port 
 paths = ${
     ("/" ~ word_with_numbers)+
 }
 
+/// Parses key-value pairs in parameters, separated by '='
 key_value_pair = {
     word_with_numbers ~ "=" ~ word_with_numbers
 }
 
+/// Parses the URL parameters, using key-value structure. Can have a couple of members, separated by '&'
 parameters = {
     key_value_pair ~ ("&" ~ key_value_pair)*
 }
 
+/// Parses the fragment
 fragment = {
     word_with_numbers
 }
 
+/// Parses the entire URL structure
+/// # Input examples
+/// * http://example.com
+/// * file://www.sub.example.org:8080/resource/resource2?query1=value1&query2=value2#section1
+/// * ftp://sub.domain.example.com/path1/path2?param=value
 url = {
     SOI ~ scheme ~ "://" ~ domain_name ~ (":" ~ port)? ~ (paths)? ~ ("?" ~ parameters)? ~ ("#" ~ fragment)? ~ EOI
 }
-
-
-WHITESPACE = _{ " " }
